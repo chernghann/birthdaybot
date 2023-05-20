@@ -47,7 +47,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     
     keyboard = [
         [
-            InlineKeyboardButton("Lunch", callback_data="Niche Savoureuse @ Toa Payoh"),
+            InlineKeyboardButton("Lunch", callback_data="/lunch"),
             InlineKeyboardButton("Dinner", callback_data="Arbora @ Mount Faber"),
         ],
         [InlineKeyboardButton("Activity", callback_data="Terrarium Workshop @ FUNAN")],
@@ -66,12 +66,15 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
     await query.answer()
 
-    await query.edit_message_text(text=f"Selected: {query.data}")
+    # await query.edit_message_text(text=f"Selected: {query.data}")
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Displays info on how to use the bot."""
     await update.message.reply_text("Use /start to test this bot.")
+
+async def lunch(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text("Niche Savoureuse @ ToaPayoh followed by a visit to HDB Hub")
 
 
 def main() -> None:
@@ -82,7 +85,7 @@ def main() -> None:
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button))
     application.add_handler(CommandHandler("help", help_command))
-
+    application.add_handler(CommandHandler("lunch", lunch))
     # Run the bot until the user presses Ctrl-C
     application.run_polling()
 
