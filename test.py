@@ -87,7 +87,6 @@ def main() -> None:
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button))
     application.add_handler(CommandHandler("help", help_command))
-    application.add_handler(CommandHandler("lunch", lunch))
     # Run the bot until the user presses Ctrl-C
     application.run_polling()
 
