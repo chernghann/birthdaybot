@@ -47,10 +47,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     
     keyboard = [
         [
-            InlineKeyboardButton("Lunch", callback_data="/lunch"),
-            InlineKeyboardButton("Dinner", callback_data="Arbora @ Mount Faber"),
+            InlineKeyboardButton("Lunch", callback_data="Lunch"),
+            InlineKeyboardButton("Dinner", callback_data="Dinner"),
         ],
-        [InlineKeyboardButton("Activity", callback_data="Terrarium Workshop @ FUNAN")],
+        [InlineKeyboardButton("Activity", callback_data="Activity")],
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -66,15 +66,17 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
     await query.answer()
 
-    # await query.edit_message_text(text=f"Selected: {query.data}")
-
+    await query.edit_message_text(text=f"Selected: {query.data}")
+    if query.data == "Lunch": 
+        await update.message.reply_text("Niche Savoureuse @ ToaPayoh followed by a visit to HDB Hub")
+    elif query.data == "Dinner":
+        await update.message.reply_text("Arbora @ Mount Faber")
+    elif query.data == "Activity":
+        await update.message.reply_text("Terrarium Workshop @ FUNAN")
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Displays info on how to use the bot."""
     await update.message.reply_text("Use /start to test this bot.")
-
-async def lunch(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("Niche Savoureuse @ ToaPayoh followed by a visit to HDB Hub")
 
 
 def main() -> None:
