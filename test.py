@@ -47,10 +47,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     
     keyboard = [
         [
-            InlineKeyboardButton("Lunch", callback_data="Niche"),
-            InlineKeyboardButton("Dinner", callback_data="Arbora"),
+            InlineKeyboardButton("Lunch", callback_data="Niche Savoureuse @ Toa Payoh"),
+            InlineKeyboardButton("Dinner", callback_data="Arbora @ Mount Faber"),
         ],
-        [InlineKeyboardButton("Activity", callback_data="Terrarium")],
+        [InlineKeyboardButton("Activity", callback_data="Terrarium Workshop @ FUNAN")],
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -66,7 +66,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
     await query.answer()
 
-    await query.edit_message_text(text=f"Selected option: {query.data}")
+    await query.edit_message_text(text=f"Selected: {query.data}")
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
