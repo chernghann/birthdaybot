@@ -61,18 +61,17 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Parses the CallbackQuery and updates the message text."""
     query = update.callback_query
-
-    # CallbackQueries need to be answered, even if no notification to the user is needed
-    # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
-    await query.answer()
-
-    await query.edit_message_text(text=f"Selected: {query.data}")
     if query.data == "Lunch": 
         await update.message.reply_text("Niche Savoureuse @ ToaPayoh followed by a visit to HDB Hub")
     elif query.data == "Dinner":
         await update.message.reply_text("Arbora @ Mount Faber")
     elif query.data == "Activity":
         await update.message.reply_text("Terrarium Workshop @ FUNAN")
+    # CallbackQueries need to be answered, even if no notification to the user is needed
+    # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
+    await query.answer()
+
+    await query.edit_message_text(text=f"Selected: {query.data}")
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Displays info on how to use the bot."""
