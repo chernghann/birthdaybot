@@ -58,19 +58,34 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Happy Birthday bb!!! Please choose:", reply_markup=reply_markup)
 
 
+def startdd(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Sends a message with three inline buttons attached."""
+    keyboard = [
+        [
+            InlineKeyboardButton("Lunch", callback_data="Lunch"),
+            InlineKeyboardButton("Dinner", callback_data="Dinner"),
+        ],
+        [InlineKeyboardButton("Activity", callback_data="Activity")],
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await update.message.reply_text("Happy Birthday bb!!! Please choose:", reply_markup=reply_markup)
+    
+
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Parses the CallbackQuery and updates the message text."""
     query = update.callback_query
     await query.answer()
     if query.data == "Lunch": 
         await query.edit_message_text(text=f"Niche Savoureuse @ ToaPayoh followed by a visit to HDB Hub")
-        await start(update, context)
+        startdd(update, context)
     elif query.data == "Dinner":
         await query.edit_message_text(text=f"Arbora @ Mount Faber")
-        await start(update, context)
+        startdd(update, context)
     elif query.data == "Activity":
         await query.edit_message_text(text=f"Terrarium Workshop @ FUNAN")
-        await start(update, context)
+        startdd(update, context)
     # CallbackQueries need to be answered, even if no notification to the user is needed
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
 
