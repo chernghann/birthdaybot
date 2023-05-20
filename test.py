@@ -70,7 +70,7 @@ def startdd(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    await update.message.reply_text("Happy Birthday bb!!! Please choose:", reply_markup=reply_markup)
+    update.message.reply_text("Happy Birthday bb!!! Please choose:", reply_markup=reply_markup)
     
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
