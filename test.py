@@ -64,10 +64,13 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await query.answer()
     if query.data == "Lunch": 
         await query.edit_message_text(text=f"Niche Savoureuse @ ToaPayoh followed by a visit to HDB Hub")
+        await start(update, context)
     elif query.data == "Dinner":
         await query.edit_message_text(text=f"Arbora @ Mount Faber")
+        await start(update, context)
     elif query.data == "Activity":
         await query.edit_message_text(text=f"Terrarium Workshop @ FUNAN")
+        await start(update, context)
     # CallbackQueries need to be answered, even if no notification to the user is needed
     # Some clients may have trouble otherwise. See https://core.telegram.org/bots/api#callbackquery
 
