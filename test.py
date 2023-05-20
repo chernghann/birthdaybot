@@ -39,15 +39,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Sends a message with three inline buttons attached."""
     keyboard = [
         [
-            InlineKeyboardButton("Option 1", callback_data="1"),
-            InlineKeyboardButton("Option 2", callback_data="2"),
+            InlineKeyboardButton("Lunch", callback_data="Niche Savoureuse 128 Lor 1 Toa Payoh, #01-833, Blk, Singapore 310128 followed by a visit to HDB Hub at Toapayoh"),
+            InlineKeyboardButton("Dinner", callback_data="Arbora 109 Mount Faber Road Faber Peak Singapore Singapore (099203) "),
         ],
-        [InlineKeyboardButton("Option 3", callback_data="3")],
+        [InlineKeyboardButton("Activity", callback_data="Terrarium Workshop (Funan) Address: Funan, 107 North Bridge Road, #04-11, Singapore 179105 ")],
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
 
-    await update.message.reply_text("Please choose:", reply_markup=reply_markup)
+    await update.message.reply_text("Happy Birthday bb!!! Please choose:", reply_markup=reply_markup)
 
 
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
